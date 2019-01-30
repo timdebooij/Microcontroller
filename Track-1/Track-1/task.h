@@ -161,8 +161,5 @@ void b6() {
 }
 
 
-void b7a() {
-	
-}
 
 #endif /* TASK_H_ */
