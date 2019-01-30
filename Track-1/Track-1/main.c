@@ -14,7 +14,7 @@
 
 int main(void)
 {
-	b4();
+	b6();
 	return 1;
 }
 
