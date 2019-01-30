@@ -5,6 +5,10 @@
 # Prerequisites
 *.d
 
+.vs/*
+*.atsuo
+
+
 # Object files
 *.o
 *.ko
