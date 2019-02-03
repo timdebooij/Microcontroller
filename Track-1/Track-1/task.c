@@ -144,6 +144,7 @@ void b5() {
 }
 
 // Task that makes works with coding states 
+// Tracking the current state of the button using either 0 or 1 (slow or fast)
 void b6() {
 	
 	// We turned all of the buttons on row C to input, because unlike the LED's we need to information when we press a button.
@@ -155,10 +156,10 @@ void b6() {
 	int button = 0;
 	
 	while(1) {
-		// Checking if the button Number is 1.
+		// Checking the button we want to press (and that is gets pressed)
 		if(PINC & 1)
 		{
-			
+			//switches button state, if it's 1 -> be 0 and the other way around
 			switch(button){
 				case 0:
 				button = 1;
@@ -170,15 +171,17 @@ void b6() {
 				
 			}	
 		}
-		
+		//Checks current state so that we can adapt the light to it
 		switch(button){
+			//Slow flickering with a delay of 1000ms (1Hz)
 			case 0:
 			PORTD = 0x80;
 			wait(1000);
 			PORTD = 0x00;
 			wait(1000);
 			break;
-			
+
+			//Fast flickering with a delay of 250ms (4Hz)
 			case 1:
 			PORTD = 0x80;
 			wait(250);
