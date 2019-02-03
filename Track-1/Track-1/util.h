@@ -10,11 +10,7 @@
 #define UTIL_H_
 #include <util/delay.h>
 
-void wait (int ms) {
-	for (int i  = 0; i<ms; i++){
-		_delay_ms(1);
-	}
-}
+void wait (int ms);
 
 
 #endif /* UTIL_H_ */
