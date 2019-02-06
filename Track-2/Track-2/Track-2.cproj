@@ -140,6 +140,12 @@
     <Compile Include="b3.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="b4.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="b4.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
