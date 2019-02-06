@@ -19,6 +19,7 @@ void setLightNext(){
 	
 }
 
+/*
 ISR( INT1_vect ){
 	position+=1;
 	if(position == 8){
@@ -45,7 +46,7 @@ ISR( INT2_vect){
 	PORTD &= ~(1<<oldPos);
 
 	PORTD |= (1<<position);
-}
+} */
 
 
 

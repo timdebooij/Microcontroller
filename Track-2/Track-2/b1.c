@@ -10,32 +10,28 @@
 #include <avr/interrupt.h>
 #include "util.h"
 
-/******************************************************************/
+/*
 ISR( INT0_vect )
-/* 
 short:			ISR INT0
 inputs:			
 outputs:	
 notes:			Set PORTD.5
 Version :    	DMK, Initial code
-*******************************************************************/
 {
     PORTD |= (1<<5);		
 }
 
-/******************************************************************/
 //ISR( INT1_vect )
-/* 
 short:			ISR INT1
 inputs:			
 outputs:	
 notes:			Clear PORTD.5
 Version :    	DMK, Initial code
-*******************************************************************/
 //{
 //    PORTD &= ~(1<<5);		
 //}
 
+*/
 
 void runb1() {
 		// Init I/O

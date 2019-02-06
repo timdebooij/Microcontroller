@@ -34,7 +34,7 @@ notes:			Slow background task after init ISR
 Version :    	DMK, Initial code
 *******************************************************************/
 {
-	runb2();
+	runb3();
 	return 1;
 }
 
