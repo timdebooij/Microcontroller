@@ -7,6 +7,11 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Track-1", "Track-1\Track-1.
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "fsm", "fsm\fsm.cproj", "{B861605B-F9FA-4EB6-9CE2-33B6DBA8BF4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Track-2", "Track-2", "{C94E9B2E-CBA2-45A2-BC88-373F95670580}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ioisr.c = ..\..\ioisr.c
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
