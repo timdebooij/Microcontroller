@@ -122,7 +122,25 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="b1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="b1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="b2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="b2.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="util.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="util.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
