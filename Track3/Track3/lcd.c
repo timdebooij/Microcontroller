@@ -11,6 +11,11 @@ void lcd_write_command(unsigned char dat);
 void lcd_writeChar( unsigned char dat);
 
 
+void setCursor(int position) 
+{
+		
+}
+
 void lcd_strobe_lcd_e(void)
 {
 	PORTC |= (1<<LCD_E);	// E high
