@@ -7,14 +7,6 @@
 #define LCD_E 	3
 #define LCD_RS	2
 
-void lcd_write_command(unsigned char dat);
-void lcd_writeChar( unsigned char dat);
-
-
-void setCursor(int position) 
-{
-		
-}
 
 void lcd_strobe_lcd_e(void)
 {
@@ -25,11 +17,13 @@ void lcd_strobe_lcd_e(void)
 }
 
 void lcd_clear(void) {
+	
 	lcd_write_command(0x01);
 }
+
 void init_4bits_mode(void)
 {
-	//lcd_clear();
+	lcd_clear();
 	// return home
 	lcd_write_command( 0x02 );
 	// mode: 4 bits interface data, 2 lines, 5x8 dots
@@ -43,45 +37,40 @@ void init_4bits_mode(void)
 
 }
 
-
-void lcd_writeLine1 ( char text1[] )
+void lcd_write_string(char *str)
 {
-	lcd_write_command(0x80);
-	for (int i=0; i<16; i++) 
-	{
-			lcd_writeChar( text1[i] );
+	for(;*str; str++){
+		lcd_write_data(*str);
 	}
 }
 
-void lcd_writeLine2 ( char text2[] )
+
+void lcd_write_data(unsigned char byte)
 {
-	lcd_write_command(0xC0);
-	for (int i=0; i<16; i++)
-	{
-		lcd_writeChar( text2[i] );
-	}
+	// First nibble.
+	PORTC = byte;
+	PORTC |= (1<<LCD_RS);
+	lcd_strobe_lcd_e();
+
+	// Second nibble
+	PORTC = (byte<<4);
+	PORTC |= (1<<LCD_RS);
+	lcd_strobe_lcd_e();
 }
 
-void lcd_writeChar( unsigned char dat)
+void lcd_write_command(unsigned char byte)
 {
-	PORTC = dat& 0xF0;
-	PORTC = PORTC | 0x0C;
-	_delay_ms(1);
-	PORTC = 0x04;
-	PORTC = (dat& 0x0F) << 4;
-	PORTC = PORTC | 0x0C;
-	_delay_ms(1);
-	PORTC = 0x00;
+	// First nibble.
+	PORTC = byte;
+	PORTC &= ~(1<<LCD_RS);
+	lcd_strobe_lcd_e();
+
+	// Second nibble
+	PORTC = (byte<<4);
+	PORTC &= ~(1<<LCD_RS);
+	lcd_strobe_lcd_e();
 }
 
-void lcd_write_command(unsigned char dat)
-{
-	PORTC = dat & 0xF0;
-	PORTC = PORTC | 0x08;
-	_delay_ms(1);
-	PORTC = 0x04;
-	PORTC = (dat& 0x0F) << 4;
-	PORTC = PORTC | 0x08;
-	_delay_ms(1);
-	PORTC = 0x00;
+void lcd_setCursor(int position) {
+	
 }
