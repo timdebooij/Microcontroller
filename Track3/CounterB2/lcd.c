@@ -6,11 +6,6 @@
 #define LCD_E 	3
 #define LCD_RS	2
 
-void lcd_strobe_lcd_e(void);
-void init_4bits_mode(void);
-void lcd_write_string(char *str);
-void lcd_write_data(unsigned char byte);
-void lcd_write_cmd(unsigned char byte);
 
 /******************************************************************/
 void lcd_strobe_lcd_e(void)
@@ -26,6 +21,11 @@ Version :    	DMK, Initial code
 	_delay_ms(1);			// nodig
 	PORTC &= ~(1<<LCD_E);  	// E low
 	_delay_ms(1);			// nodig?
+}
+
+void lcd_clear()
+{
+	lcd_write_command(0x01);
 }
 
 /******************************************************************/
