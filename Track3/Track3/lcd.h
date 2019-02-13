@@ -12,3 +12,6 @@ void lcd_write_string(char *str);
 void lcd_write_data(unsigned char byte);
 void lcd_write_command(unsigned char byte);
 void lcd_setCursor(int position);
+void lcd_writeChar( unsigned char dat);
+void lcd_writeLine1 ( char text1[] );
+void lcd_writeLine2 ( char text1[] );

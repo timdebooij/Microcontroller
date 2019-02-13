@@ -12,22 +12,24 @@
 #include "lcd.h"
 
 
-int main(void)
+int main()
 {
-	DDRD = 0xFF;			// PORTD(7) output, PORTD(6:0) input
+	DDRD = 0xFF;
+	DDRC = 0xFF;			// PORTD(7) output, PORTD(6:0) input
 
 	// Init LCD
 	init_4bits_mode();
 
+	char str[] = "Look at me";
 	// Write sample string
-	lcd_write_string("Hello World kldklaskldklasmlksdkmldasmlkmkldskmlsamlkdmklsamklklmdsaklmdslkmdlksam");	
+	lcd_writeLine1(str);
+	lcd_writeLine2(str);
 	// Loop forever
 	while (1)
 	{
 		PORTD ^= (1<<7);	// Toggle PORTD.7
 		_delay_ms( 250 );
-		
 	}
-	
+	return 0;
 }
 
