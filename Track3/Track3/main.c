@@ -12,34 +12,33 @@
 #include <avr/interrupt.h>
 #include "lcd.h"
 
-
-
-int main( void )
-/*
-short:			main() loop, entry point of executable
-inputs:
-outputs:
-notes:			Slow background task after init ISR
-Version :    	DMK, Initial code
-*******************************************************************/
-{
-	// Init I/O
-	DDRD = 0xFF;			// PORTD(7) output, PORTD(6:0) input
-
-	// Init LCD
-	init_4bits_mode();
-
-	// Write sample string
-	lcd_write_string("Microcontrollers");
-	setCursor(-40);
-
-	// Loop forever
-	while (1)
-	{
-		PORTD ^= (1<<7);	// Toggle PORTD.7
-		_delay_ms( 250 );
+	int counter = 0;
+	int ms_counter = 0;
+	int mses[] = {25, 15};
+	ISR(TIMER2_COMP_vect){
+		if((++counter) > mses[ms_counter]){
+			PORTD ^= 1;
+			TCNT2 = 0;
+			ms_counter = (ms_counter+1)%2;
+			counter = 0;
+			
+		}
+		
 	}
 
-	return 1;
-}
 
+void main(){
+	DDRD = 0xff;
+	
+	TCNT2 = 0;
+	OCR2 = 0x05;
+	TCCR2 = (1 << WGM21) | (1 << CS20)| (1 << CS22);
+	TIMSK = (1 << OCIE2);
+	sei();
+	
+	while(1){
+		
+	}
+
+	
+}
