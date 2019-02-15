@@ -2,7 +2,7 @@
  * CounterB2.c
  *
  * Created: 13-2-2019 14:51:18
- * Author : Tom Martens
+ * Author : Tim, Tom, Patrick, Simon
  */ 
 
 #define F_CPU 8000000L
@@ -22,7 +22,7 @@ int main( void )
 	DDRD &= ~BIT(7);
 	TCCR2 = 0b00000111;
 	DDRB = 0xFF;
-//	PORTB = TCNT2;
+	PORTB = TCNT2;
 	init_4bits_mode();
 	int currrentValue = TCNT2;
 	
