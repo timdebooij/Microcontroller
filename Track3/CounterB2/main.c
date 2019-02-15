@@ -9,33 +9,35 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
+#include <stdio.h>
 #include "lcd.h"
 
 #define BIT(x)(1 << (x))
 
 void wait (int ms);
 
-unsigned int i = 0; 
-
 int main( void )
 {
-	TCCR2 = 0x07;
-	unsigned char *c[7];
+	unsigned char c[7];
 	DDRD &= ~BIT(7);
-	DDRA = 0x00;
+	TCCR2 = 0b00000111;
+	DDRB = 0xFF;
+//	PORTB = TCNT2;
 	init_4bits_mode();
+	int currrentValue = TCNT2;
+	
 	while (1)
 	{
-		if((PINA & 1) > 0)
+		if(currrentValue != TCNT2)
 		{
-			i += 1;
-			
+			currrentValue = TCNT2;
+			sprintf(c,"%i",TCNT2);
 			lcd_clear();
-			itoa(i, c, 10);
 			lcd_write_string(c);
+			
 		}
-		wait(200);
 	}
+	
 }
 
 void wait (int ms)
