@@ -12,7 +12,6 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
-#include "lcd.h"
 
 int counter = 0;
 int ms_counter = 0;
@@ -27,7 +26,7 @@ ISR(TIMER2_COMP_vect){
 }
 
 
-void main(){
+int main(){
 	DDRD = 0xff;
 
 	TCNT2 = 0;
