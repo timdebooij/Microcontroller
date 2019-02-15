@@ -7,6 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Track3", "Track3\Track3.cpr
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "CounterB2", "CounterB2\CounterB2.cproj", "{98CA537B-82D4-4A7D-B842-87462FDF5273}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TimerB3", "TimerB3\TimerB3.cproj", "{6893B091-0C49-46D6-B1D3-3149B7283CE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -21,6 +23,10 @@ Global
 		{98CA537B-82D4-4A7D-B842-87462FDF5273}.Debug|AVR.Build.0 = Debug|AVR
 		{98CA537B-82D4-4A7D-B842-87462FDF5273}.Release|AVR.ActiveCfg = Release|AVR
 		{98CA537B-82D4-4A7D-B842-87462FDF5273}.Release|AVR.Build.0 = Release|AVR
+		{6893B091-0C49-46D6-B1D3-3149B7283CE5}.Debug|AVR.ActiveCfg = Debug|AVR
+		{6893B091-0C49-46D6-B1D3-3149B7283CE5}.Debug|AVR.Build.0 = Debug|AVR
+		{6893B091-0C49-46D6-B1D3-3149B7283CE5}.Release|AVR.ActiveCfg = Release|AVR
+		{6893B091-0C49-46D6-B1D3-3149B7283CE5}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
