@@ -13,27 +13,19 @@
 #include "lcd.h"
 
 
-
 int main( void )
-/*
-short:			main() loop, entry point of executable
-inputs:
-outputs:
-notes:			Slow background task after init ISR
-Version :    	DMK, Initial code
-*******************************************************************/
 {
-	// Init I/O
+	// Initializing I/O
 	DDRD = 0xFF;			// PORTD(7) output, PORTD(6:0) input
 
-	// Init LCD
+	// Initializing the display
 	init_4bits_mode();
 
-	// Write sample string
+	// Sending sample String to display to test it
 	lcd_write_string("Microcontrollers");
+	// Put the cursor 40 position's back
 	setCursor(-40);
 
-	// Loop forever
 	while (1)
 	{
 		PORTD ^= (1<<7);	// Toggle PORTD.7

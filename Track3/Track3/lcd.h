@@ -2,7 +2,7 @@
  * lcd.h
  *
  * Created: 13/02/2019 09:48:42
- *  Author: Patrick
+ *  Author: Patrick, Tim, Simon, Tom
  */ 
 
 void lcd_strobe_lcd_e(void);
