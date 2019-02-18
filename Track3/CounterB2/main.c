@@ -14,35 +14,38 @@
 
 #define BIT(x)(1 << (x))
 
-void wait (int ms);
-
 int main( void )
 {
+	//een char array voor het opslaan (en tonen) van de cijfers op het LCD schermpje
 	unsigned char c[7];
+	//PD7 op input
 	DDRD &= ~BIT(7);
+	//Tellen via PD7, rising edge (voor accuraatheid)
 	TCCR2 = 0b00000111;
+	//PORTB is een output
 	DDRB = 0xFF;
+	//Counter toewijzen, toont waarde van TCCR2
 	PORTB = TCNT2;
+	//Het initaliseren van het LCD scherm
 	init_4bits_mode();
+	//Bijhouden hoevaak er op het knopje gedrukt is, TCNT2 bevat deze waarde, TCNT2 = 8-bit timer 
 	int currrentValue = TCNT2;
 	
 	while (1)
 	{
+		//Controleren of er op het knopje gedrukt is (doe anders niks)
 		if(currrentValue != TCNT2)
 		{
+			//Waarde van currentvalue weer aanpassen aan hoevaak er op het knopje is gedrukt
 			currrentValue = TCNT2;
+			//de waarde van TCNT2 opslaan in c
 			sprintf(c,"%i",TCNT2);
+			//Clearen voordat we gaan schrijven op het LCD schermpje
 			lcd_clear();
+			//Schrijf de string op het LCD schermpje
 			lcd_write_string(c);
 			
 		}
 	}
 	
-}
-
-void wait (int ms)
-{
-	for (int i  = 0; i<ms; i++){
-		_delay_ms(1);
-	}
 }
