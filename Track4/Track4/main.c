@@ -40,11 +40,6 @@ void initB3(){
 	//start conversion is uit
 }
 
-ISR(INT0_vect){
-	ADCSRA = 0b11000110;
-	PORTA = ADCH;
-}
-
 int main(void)
 {
 	DDRF = 0x00;				// set PORTF for input (ADC)
@@ -53,15 +48,16 @@ int main(void)
 	DDRD = 111110000;
 	EICRA = 00000011;
 	sei();
-	init();					// initialize ADC
+	initB3();					// initialize ADC
 
     /* Replace with your application code */
     while (1) 
     {
 		
+		ADCSRA = 0b11000110;
 		//PORTB = ADCL;			// Show MSB/LSB (bit 10:0) of ADC
-		//PORTA = ADCH;
-		wait(100);				// every 100 ms (busy waiting)
+		PORTA = ADCH;
+		wait(1000);				// every 100 ms (busy waiting)
 		
     }
 }
