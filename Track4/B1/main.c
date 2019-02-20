@@ -5,24 +5,19 @@
 #include <avr/interrupt.h>
 #include "display.h"
 
-// wait(): busy waiting for 'ms' millisecond
-// Used library: util/delay.h
-unsigned int reverseBits(unsigned int num);
-
+// Pre made Wait function
 void wait( int ms )
 {
 	for (int tms=0; tms<ms; tms++)
 	{
-		_delay_ms( 1 );			// library function (max 30 ms at 8MHz)
+		_delay_ms( 1 );			
 	}
 }
 
-
-// Initialize ADC: 10-bits (left justified), free running
 void init( void )
 {
-	ADMUX = 0b11100001;			// AREF=VCC, result left adjusted, channel1 at pin PF1
-	ADCSRA = 0b11000110;		// ADC-enable, no interrupt, start, free running, division by 64
+	ADMUX = 0b11100001;			// Same as B1 but now turned off B3
+	ADCSRA = 0b11000110;		
 }
 
 
@@ -30,8 +25,9 @@ void init( void )
 int main( void )
 {
 	unsigned char c[7];
-	//FOR DISPLAY
+	
 	DDRD = 0xFF;
+	// Same as last weeks
 	init_4bits_mode();
 	
 	//FOR ADC
@@ -42,11 +38,12 @@ int main( void )
 
 	while (1)
 	{
+		// Clearing screen
 		lcd_clear();
-		//PORTB = ADCL;			// Show MSB/LSB (bit 10:0) of ADC
+		
 		PORTA = ADCH;
 		
-		
+		// Writing to screen, itoa for setting bit to char
 		lcd_write_string(itoa((ADCH << 1) /2, c, 10));
 		wait(100);				// every 100 ms (busy waiting)
 	}
