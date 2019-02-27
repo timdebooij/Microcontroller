@@ -45,9 +45,7 @@ int main(void)
 	DDRF = 0x00;				// set PORTF for input (ADC)
 	DDRA = 0xFF;				// set PORTA for output
 	DDRB = 0xFF;				// set PORTB for output
-	DDRD = 111110000;
-	EICRA = 00000011;
-	sei();
+	
 	initB3();					// initialize ADC
 
     /* Replace with your application code */
@@ -55,7 +53,6 @@ int main(void)
     {
 		
 		ADCSRA = 0b11000110;
-		//PORTB = ADCL;			// Show MSB/LSB (bit 10:0) of ADC
 		PORTA = ADCH;
 		wait(1000);				// every 100 ms (busy waiting)
 		
